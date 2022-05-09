@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown";
 export type PostProps = {
   id: string;
   title: string;
-  author: {
+  traveller: {
     name: string;
     email: string;
   } | null;
@@ -14,11 +14,11 @@ export type PostProps = {
 };
 
 const Post: React.FC<{ post: PostProps }> = ({ post }) => {
-  const authorName = post.author ? post.author.name : "Unknown author";
+  const travellerName = post.traveller ? post.traveller.name : "Unknown traveller";
   return (
     <div onClick={() => Router.push("/p/[id]", `/p/${post.id}`)}>
       <h2>{post.title}</h2>
-      <small>By {authorName}</small>
+      <small>By {travellerName}</small>
       <ReactMarkdown children={post.content} />
       <style jsx>{`
         div {

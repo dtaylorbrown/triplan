@@ -1,21 +1,17 @@
 import React from "react"
 import { GetServerSideProps } from "next"
+import prisma from '../lib/prisma';
 import Layout from "../components/Layout"
 import Post, { PostProps } from "../components/Post"
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const feed = [
-    {
-      id: "1",
-      title: "Prisma is the perfect ORM for Next.js",
-      content: "[Prisma](https://github.com/prisma/prisma) and Next.js go _great_ together!",
-      published: false,
-      author: {
-        name: "Nikolas Burk",
-        email: "burk@prisma.io",
+  const feed = await prisma.trip.findMany({
+    include: {
+      traveller: {
+        select: { name: true },
       },
     },
-  ]
+  });
   return { props: { feed } }
 }
 
@@ -27,7 +23,7 @@ const Blog: React.FC<Props> = (props) => {
   return (
     <Layout>
       <div className="page">
-        <h1>Public Feed</h1>
+        <h1>Upcoming Trips</h1>
         <main>
           {props.feed.map((post) => (
             <div key={post.id} className="post">
