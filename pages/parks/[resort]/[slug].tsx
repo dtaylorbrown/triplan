@@ -1,6 +1,7 @@
 import { GetServerSideProps } from "next"
 
 import Layout from "../../../components/Layout";
+import ParkItem from "../../../components/Park/Park";
 import ParkEntities from "../../../utils/parkEntities";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
@@ -25,7 +26,7 @@ const Park: React.FC<ParkEntityProps> = (props) => {
   return (
     <Layout>
       <h1>{props.name}</h1>
-      <p>Entity ID: {props.id}</p>
+      <ParkItem entity={props.id} />
     </Layout>
   )
 }
