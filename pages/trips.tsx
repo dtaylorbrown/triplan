@@ -1,4 +1,5 @@
-import React from "react"
+import { Fragment } from "react";
+import Head from 'next/head';
 import { GetServerSideProps } from "next"
 import prisma from '../lib/prisma';
 import Layout from "../components/Layout"
@@ -22,16 +23,21 @@ type Props = {
 
 const TripFeed: React.FC<Props> = (props) => {
   return (
-    <Layout>
-      <h1>Upcoming Trips</h1>
-      <ul>
-        {props.trips.map((post) => (
-          <li key={post.id}>
-            <Trip trip={post} />
-          </li>
-        ))}
-      </ul>
-    </Layout>
+    <Fragment>
+      <Head>
+				<title>Trips - Triplan</title>
+      </Head>
+      <Layout>
+        <h1>Upcoming Trips</h1>
+        <ul>
+          {props.trips.map((post) => (
+            <li key={post.id}>
+              <Trip trip={post} />
+            </li>
+          ))}
+        </ul>
+      </Layout>
+    </Fragment>
   )
 }
 
