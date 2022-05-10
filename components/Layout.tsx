@@ -1,5 +1,5 @@
 import React, { ReactNode, Fragment } from "react";
-import Header from "./Header";
+import Header from "./Header/Header";
 
 import styles from "./Layout.module.css";
 

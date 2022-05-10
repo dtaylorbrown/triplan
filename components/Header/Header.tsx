@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { signOut, useSession } from 'next-auth/react';
 
-import Nav from "../components/layout/Navigation/Nav";
+import Nav from "../layout/Navigation/Nav";
 import styles from "./Header.module.css";
 
 const Header: React.FC = () => {

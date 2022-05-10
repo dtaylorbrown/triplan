@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { GetServerSideProps } from "next"
 import prisma from '../lib/prisma';
 import Layout from "../components/Layout"
-import Trip, { TripProps } from "../components/Trip"
+import Trip, { TripProps } from "../components/Trip/Trip"
 
 // TODO - get these from session id?!
 export const getServerSideProps: GetServerSideProps = async () => {
