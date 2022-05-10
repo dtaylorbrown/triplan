@@ -3,6 +3,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { signOut, useSession } from 'next-auth/react';
 
+import Nav from "../components/layout/Navigation/Nav";
+import styles from "./Header.module.css";
+
 const Header: React.FC = () => {
   const router = useRouter();
   const isActive: (pathname: string) => boolean = (pathname) =>
@@ -11,10 +14,10 @@ const Header: React.FC = () => {
   const { data: session, status } = useSession();
 
   let left = (
-    <div className="left">
+    <div className={styles.left}>
       <Link href="/">
-        <a className="bold" data-active={isActive('/')}>
-          Feed
+        <a data-active={isActive('/')}>
+          Home
         </a>
       </Link>
     </div>
@@ -24,16 +27,16 @@ const Header: React.FC = () => {
 
   if (status === 'loading') {
     left = (
-      <div className="left">
-        <Link href="/">
-          <a className="bold" data-active={isActive('/')}>
-            Feed
+      <div className={styles.left}>
+        <Link href="/" data-active={isActive('/')}>
+          <a data-active={isActive('/')}>
+            Home
           </a>
         </Link>
       </div>
     );
     right = (
-      <div className="right">
+      <div className={styles.right}>
         <p>Validating session ...</p>
       </div>
     );
@@ -41,7 +44,7 @@ const Header: React.FC = () => {
 
   if (!session) {
     right = (
-      <div className="right">
+      <div className={styles.right}>
         <Link href="/api/auth/signin">
           <a data-active={isActive('/signup')}>Log in</a>
         </Link>
@@ -51,39 +54,33 @@ const Header: React.FC = () => {
 
   if (session) {
     left = (
-      <div className="left">
+      <div className={styles.left}>
         <Link href="/">
-          <a className="bold" data-active={isActive('/')}>
-            Feed
+          <a data-active={isActive('/')}>
+            Home
           </a>
         </Link>
-        <Link href="/drafts">
-          <a data-active={isActive('/drafts')}>My drafts</a>
+        <Link href="/trips">
+          <a data-active={isActive('/trips')}>Trips</a>
+        </Link>
+        <Link href="/wish-list">
+          <a data-active={isActive('/wish-list')}>Wishlist</a>
         </Link>
       </div>
     );
     right = (
-      <div className="right">
-        <p>
-          {session.user.name} ({session.user.email})
-        </p>
-        <Link href="/create">
-          <button>
-            <a>New post</a>
-          </button>
-        </Link>
-        <button onClick={() => signOut()}>
-          <a>Log out</a>
-        </button>
+      <div className={styles.right}>
+        <p>{session.user.name}</p>
+        <button onClick={() => signOut()}>Log out</button>
       </div>
     );
   }
 
   return (
-    <nav>
+    <Nav>
       {left}
       {right}
-    </nav>
+    </Nav>
   );
 };
 

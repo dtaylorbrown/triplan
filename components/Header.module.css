@@ -1,0 +1,16 @@
+.right, .left {
+  display: flex;
+}
+
+.right button {
+  margin-left: 15px;
+}
+
+.left a {
+  padding: 0 10px;
+  text-decoration: none;
+}
+
+.left a[data-active="true"] {
+  text-decoration: underline;
+}

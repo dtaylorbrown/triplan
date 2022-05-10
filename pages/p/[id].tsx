@@ -3,10 +3,10 @@ import { GetServerSideProps } from "next"
 import ReactMarkdown from "react-markdown"
 import prisma from '../../lib/prisma';
 import Layout from "../../components/Layout"
-import { PostProps } from "../../components/Post"
+import { TripProps } from "../../components/Trip"
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const post = await prisma.trip.findUnique({
+  const trip = await prisma.trip.findUnique({
     where: {
       id: String(params?.id),
     },
@@ -17,11 +17,11 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     },
   });
   return {
-    props: post,
+    props: trip,
   };
 }
 
-const Post: React.FC<PostProps> = (props) => {
+const Trip: React.FC<TripProps> = (props) => {
   let title = props.title
 
   return (
@@ -35,4 +35,4 @@ const Post: React.FC<PostProps> = (props) => {
   )
 }
 
-export default Post
+export default Trip

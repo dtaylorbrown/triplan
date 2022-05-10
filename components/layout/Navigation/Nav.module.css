@@ -1,0 +1,28 @@
+.main-navigation {
+  background: rebeccapurple;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+}
+
+.main-navigation a {
+  color: white;
+  font-weight: bold;
+}
+
+.main-navigation p {
+  color: white;
+}
+
+.main-navigation button {
+  border: 0;
+  background: 0;
+  color: white;
+  cursor: pointer;
+}
+
+.main-navigation button:hover {
+  text-decoration: underline;
+}
+
