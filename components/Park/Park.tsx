@@ -1,10 +1,9 @@
-type ParkProps = {
-  entity: string
-}
+import { ParkEntityProps } from "../../pages/parks/[resort]/[slug]";
 
-const ParkItem:React.FC<ParkProps> = ({ entity }) => {
+const ParkItem:React.FC<ParkEntityProps> = ({ park }) => {
+  console.log(park)
   return(
-    <h2>Park item...{entity}</h2>
+    <h2>{park.name}</h2>
   )
 }
 
