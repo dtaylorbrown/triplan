@@ -21,7 +21,7 @@ const Home: React.FC = () => {
                 <h2>{resort.name}</h2>
                 {resort.parks.map((park) => {
                   return (
-                    <Link key={park.slug} href={`/parks/${resort.slug}/${park.slug}`}>{park.name}</Link>
+                    <Link key={park.slug} href={`/parks/${resort.slug}/${park.slug}`}><a>{park.name}</a></Link>
                   )
                 })}
               </li>
