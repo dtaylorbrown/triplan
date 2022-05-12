@@ -13,6 +13,7 @@ const Home: React.FC = () => {
 				<title>Triplan</title>
 			</Head>
       <Layout>
+        <h1 className="main-title">Plan your next trip</h1>
         <ul className="park-list">
           {resorts.map((resort) => {
             return(

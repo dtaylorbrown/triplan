@@ -79,6 +79,22 @@ html, body {
   font-weight: 400;
 }
 
+.main-title {
+  text-align: center;
+  margin-bottom: 60px;
+  color: rebeccapurple;
+}
+
+.main-title::after {
+  content: '';
+  display: block;
+  height: 5px;
+  width: 50px;
+  margin: 0 auto;
+  background: rebeccapurple;
+  margin-top: 15px;
+}
+
 .park-list {
   display: flex;
   list-style: none;

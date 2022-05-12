@@ -14,5 +14,19 @@ const options = {
       clientSecret: process.env.GITHUB_SECRET,
     }),
   ],
+  callbacks: {
+    async session({ session, token, user }) {
+      const dbUser = await prisma.user.findUnique({
+        where: {
+          email: user.email
+        }
+      });
+      session.user.id = dbUser.id;
+      return session
+    },
+    async redirect({ baseUrl }) {
+      return baseUrl
+    }
+  },
   adapter: PrismaAdapter(prisma),
 };
