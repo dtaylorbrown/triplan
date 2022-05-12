@@ -47,12 +47,10 @@ export type ParkEntityProps = {
 const Park: React.FC<ParkEntityProps> = ({ park }) => {
   return (
     <Layout>
-      
       {park.error ?
         <h1>{park.error}</h1> :
         <ParkItem park={park} />
       }
-      
     </Layout>
   )
 }
