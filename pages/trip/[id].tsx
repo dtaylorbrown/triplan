@@ -20,18 +20,18 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   };
 }
 
-const Trip: React.FC<TripProps> = (props) => {
-  let title = props.title
-
+const SingleTrip: React.FC<TripProps> = (props) => {
   return (
     <Layout>
       <div>
-        <h2>{title}</h2>
-        <p>By {props?.traveller?.name || "Unknown traveller"}</p>
-        <ReactMarkdown children={props.content} />
+        <p>{ props.title }</p>
+        <p>{ props.startDate.toString() }</p>
+        <p>{ props.endDate.toString() }</p>
+        <p>{ props.traveller.name }</p>
+        <p>{ props.traveller.image }</p>
       </div>
     </Layout>
   )
 }
 
-export default Trip
+export default SingleTrip

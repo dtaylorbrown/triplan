@@ -3,22 +3,20 @@ import Router from "next/router";
 export type TripProps = {
   id: string;
   title: string;
+  startDate: Date;
+  endDate: Date;
   traveller: {
     name: string;
     email: string;
+    image?: string;
   } | null;
-  content: string;
-  published: boolean;
 };
 
 const Trip: React.FC<{ trip: TripProps }> = ({ trip }) => {
-  console.log(trip);
-  const travellerName = trip.traveller ? trip.traveller.name : "Unknown traveller";
   return (
     // TODO this is terrible... use link plz
-    <div onClick={() => Router.push("/trip/[id]", `/p/${trip.id}`)}>
+    <div onClick={() => Router.push("/trip/[id]", `/trip/${trip.id}`)}>
       <h2>{trip.title}</h2>
-      <small>By {travellerName}</small>
     </div>
   );
 };
