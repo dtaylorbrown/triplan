@@ -1,22 +1,15 @@
 .main-navigation {
-  background: rebeccapurple;
   width: 100%;
   padding: 30px;
 }
 
 .main-navigation a {
-  color: white;
   font-weight: bold;
-}
-
-.main-navigation p {
-  color: white;
 }
 
 .main-navigation button {
   border: 0;
   background: 0;
-  color: white;
   cursor: pointer;
 }
 
